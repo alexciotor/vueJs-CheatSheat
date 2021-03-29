@@ -42,6 +42,17 @@
       <button v-on:click="add2(10)">add 10</button>
       <p>{{ counter3 }}</p>
       <button v-on:click="reduce2(10)">remuve 10</button>
+      <br /><br /><br /><br />
+
+      <input type="text" v-on:input="setName" />
+      <p>your name is: {{ name }}</p>
+      <br /><br /><br /><br />
+      on submit
+      <form v-on:submit="submitForm">
+        <input type="text" />
+        <button type="">sign up</button>
+      </form>
+      <br /><br /><br /><br />
     </div>
   </section>
 </template>
@@ -59,7 +70,8 @@ export default {
       elem: "<h1>hello world</h1>",
       counter: 0,
       counter2: 0,
-      counter3: 0
+      counter3: 0,
+      name: ""
     };
   },
   methods: {
@@ -78,6 +90,13 @@ export default {
     },
     reduce2(num) {
       this.counter3 -= num;
+    },
+    setName(event) {
+      this.name = event.target.value;
+    },
+    submitForm(e) {
+      e.preventDefault();
+      alert("Form submitted");
     },
     number() {
       const random = Math.random();
@@ -100,6 +119,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-transform: capitalize;
 }
 .main-container {
   margin-left: 50px;
